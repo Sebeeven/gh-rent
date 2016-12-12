@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>list-page</title>
+</head>
+
+<link rel="stylesheet" href="{% static 'css/list-page.css' %}" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="{% static 'css/CampusRenting-LandingPage.css' %}" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+<body style="background: #e5e5e5;">
+    <div class="ui vertical basic segment bg" style="padding: 0px;">
+        <div class="ui inverted top borderless menu" style="background-color: rgba(0, 0, 0, 0.2);top:0px;" >
+            <div class="ui inverted text menu">
+
+                <div class="ui image">
+                    <img src="/static/image/logo.png" alt="" class="logo" />
+                </div>
+
+                <span class="layer1">校园租</span>
+
+                <div class="right menu">
+                    <a herf="#" class="item login">登录</a>
+                    <a herf="#" class="item">
+                        <button type="button" name="button" class="ui circular orange button">
+                        <img src="/static/image/key_icon.png" alt="" class="key"/>
+                        <span class="fine-tuning">注册</span>
+                    </button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="ui basic vertical segment pku-tit">
+            北京大学搜索结果：43个房源
+        </div>
+
+    </div>
+
+    <div class="content bg">
+        <div class="Rectangle-87">
+            <div class="layer3">
+                筛选
+            </div>
+
+            <div class="ui left floated segment l1" style="box-shadow: none;">
+                <form action="" method="post" enctype="multipart/form-data">
+                <div class="ui vertical basic segment">
+                    <div class="layer4">
+                        按类型
+                        <img src="/static/image/right_icon.png" alt="" style="width:6px;height:11px;margin-left:20.5px;" />
+                        <div class="ui form">
+                            <div class="inline fields">
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="frequency" checked="checked">
+                                        <label class="layer5">整租</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="frequency">
+                                        <label class="layer5">合租</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="frequency">
+                                        <label class="layer5">月租</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui vertical basic segment">
+                    <div class="layer4" style=" margin-top:19px;">
+                        按户型
+                        <img src="/static/image/right_icon.png" alt="" style="width:6px;height:11px;margin-left:20.5px;margin-top:15px;" />
+                    </div>
+                    <div class="ui vertical basic segment form1">
+                        <div class="ui checkbox" style="margin-top:-2px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">一居</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">两居</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">三居</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">四居</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">其他</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui vertical basic segment" style="margin-top:-40px;">
+                    <div class="layer4">
+                        按价格
+                        <img src="/static/image/right_icon.png" alt="" style="width:6px;height:11px;margin-left:20.5px;margin-top:15px;" />
+                    </div>
+
+                    <div class="ui vertical basic segment" style="margin-left:7px;margin-top:25px;">
+                        <img src="/static/image/pricechoose_bg.png" alt="" class="pricechoose" />
+                        <img src="/static/image/pricechoose.png" alt="" class="pricechoose1" />
+                        <img src="/static/image/handler_icon.png" alt="" class="pricechoose2" />
+                        <img src="/static/image/handler_icon.png" alt="" class="pricechoose3" />
+                    </div>
+
+                    <div class="ui vertical basic segment form1" style="margin-top:-2px;">
+                        <div type="button" name="button" class="Rectangle-105">
+                        <input type="input" class="ui basic segment price1" value="10" style="margin-right: 35px;">
+
+                        </input>
+                      </div>
+
+                        <div type="button" name="button" class="Rectangle-105">
+                        <input type="input"  class="ui basic segment price1" value="300">
+
+                        </input>
+                      </div>
+
+
+                    </div>
+                </div>
+
+                <div class="ui vertical basic segment">
+                    <div class="layer4" style="margin-top:10px;">
+                        按设施
+                        <img src="/static/image/right_icon.png" alt="" style="width:6px;height:11px;margin-left:20.5px;margin-top:15px;" />
+                    </div>
+                    <div class="ui vertical basic segment form1" style="margin-top:5px;">
+                        <div class="ui checkbox" style="margin-top:-2px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5" style="width: 100px;">独立卫生间</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5" style="width: 88px;">独立阳台</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">厨房</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">淋浴</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">空调</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">电视</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">网络</label>
+                        </div>
+                        </br>
+                        <div class="ui checkbox" style="margin-top:-20px;">
+                            <input type="checkbox" name="example">
+                            <label class="layer5">暖气</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ui vertical basic segment">
+                    <div style="width: 100%;background-color: #fcc416;height: 35px;text-align: center;border-radius: 5px;">
+                        {% csrf_token %}
+                        <button type="submit" style="height: 100%;background: none;border: none;">完成筛选</button>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="ui right floated segment r1" style="box-shadow: none;">
+          <div class="ui borderless text menu" style="margin-top:2px;">
+            <div class="layer6">
+                排序
+            </div>
+
+            <div class="ui dropdown sort" style="border: none;text-align:center;margin-right:10px;">
+                <div class="ui form" >
+                    <div class="field">
+                        <select style="height: 40px;-moz-appearance: none;-webkit-appearance: none;">
+                            <option value="2">价格升序</option>
+                            <option value="1">价格降序</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="ui divider" style="margin-top:-2px;"></div>
+
+          <div class="ui three column grid">
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img1.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 3750/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img2.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 2600/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img3.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 3000/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui three column grid" style="margin-top:-10px;">
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img4.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 3000/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img5.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 3750/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img6.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 2600/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui three column grid" style="margin-top:-10px;">
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img7.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 3000/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img8.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 2600/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui inverted segment card-view" style="  background: url('/static/image/img9.png');"></div>
+              <div class="ui inverted segment card-bottom">
+                <div class="ui vertical segment suub">
+                  <div class="layer8">
+                    ¥ 3750/月
+                  </div>
+                  <div class="layer9">
+                    清华东路27号院2居室整租
+                  </div>
+                  <div class="layer10">
+                    整租-距离北京大学500米
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui vertical basic segment" style="margin-top:12px;">
+            <div class="ui left floated segment l2">
+              <i class="angle left big icon"></i>
+            </div>
+            <div class="ui borderless text menu num">
+              <div class="item-num" style="background-color: #fcc416;">
+                <div class="layer12">1</div>
+              </div>
+              <div class="item-num"><div class="layer11">2</div></div>
+              <div class="item-num"><div class="layer11">3</div></div>
+              <div class="item-num"><div class="layer11">4</div></div>
+            </div>
+
+            <div class="ui right floated segment r2">
+              <i class="angle right big icon"></i>
+            </div>
+
+
+          </div>
+
+        </div>
+
+    </div>
+
+    <!--<div class="ui basic vertical segment" style="width: 1440px;height:307px;background-color: #ffffff;">
+      <div class="ui basic vertical segment" style="margin-top:18px;width:878px;position:relative;left:50%;transform:translate(-50%,0)">
+
+        <div class="ui four column grid" style="width:988px;">
+          <div class="column">
+            <div class="ui vertical text menu">
+                <div class="item-header">关于我们</div>
+                <div class="item-content">常见问题</div>
+                <div class="item-content">联系我们</div>
+                <div class="item-content">加入我们</div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="ui vertical text menu">
+                <div class="item-header">热门房源</div>
+                <div class="item-content">北京大学</div>
+                <div class="item-content">清华大学</div>
+                <div class="item-content">人民大学</div>
+                <div class="item-content">北京邮电</div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="ui vertical text menu">
+                <div class="item-header">关注我们</div>
+                <div class="item-content">关注微博</div>
+                <div class="item-content">关注微信</div>
+                <div class="item-content">关注头条号</div>
+                <div class="item-content">关注知乎</div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="ui vertical text menu">
+                <div class="item-header">反馈问题</div>
+                <div class="item-email">
+                  欢迎写邮件向我们反馈
+                  邮箱地址：
+                  hi@mugglecoding.com
+                </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ui divider botm"></div>
+
+        <div class="ui left floated vertical basic segment Developed-by-Mugglec">
+          Developed by Mugglecoding team 3 group 46 Kathy
+        </div>
+
+        <div class="ui right floated vertical basic segment ICP15047012-2">
+          京ICP备15047012号-2
+        </div>
+
+      </div>
+
+    </div>-->
+    
+    <!-- - - - - - - - - - - - - - - - - footer - - - - - - - - - - - - - - - - -->
+        <div class="ui vertical segment footer" style="background-color: white;">
+            <div class="ui container footer">
+                <div class="ui grid footer">
+                    <!-- firt column -->
+                    <div class="four wide column in-footer">
+                        <div class="ui vertical text menu in-footer">
+                            <div class="item header-in-menu-footer">
+                                <h3 class="ui header">关于我们</h3>
+                            </div>
+                            <div class="item in-menu-footer">常见问题</div>
+                            <div class="item in-menu-footer">联系我们</div>
+                            <div class="item in-menu-footer">加入我们</div>
+                        </div>
+                    </div>
+                    <!-- second column -->
+                    <div class="four wide column in-footer" style="padding-left: 31px;">
+                        <div class="ui vertical text menu in-footer">
+                            <div class="item header-in-menu-footer">
+                                <h3 class="ui header">热门房源</h3>
+                            </div>
+                            <div class="item in-menu-footer">北京大学</div>
+                            <div class="item in-menu-footer">清华大学</div>
+                            <div class="item in-menu-footer">人民大学</div>
+                            <div class="item in-menu-footer">北京邮电</div>
+                        </div>
+                    </div>
+                    <!-- third column -->
+                    <div class="four wide column in-footer" style="padding-left: 62px;">
+                        <div class="ui vertical text menu in-footer">
+                            <div class="item header-in-menu-footer">
+                                <h3 class="ui header">关注我们</h3>
+                            </div>
+                            <div class="item in-menu-footer">关注微信</div>
+                            <div class="item in-menu-footer">关注微薄</div>
+                            <div class="item in-menu-footer">关注头条号</div>
+                            <div class="item in-menu-footer">关注知乎</div>
+                        </div>
+                    </div>
+                    <!-- fourth column -->
+                    <div class="four wide column in-footer" style="padding-left: 93px;">
+                        <div class="ui vertical text menu in-footer">
+                            <div class="item header-in-menu-footer">
+                                <h3 class="ui header">反馈问题</h3>
+                            </div>
+                            <div class="item in-menu-footer" style="line-height: 150%;">
+                                欢迎写邮件向我们反馈<br />
+                                邮箱地址：<br />
+                                hi@mugglecoding.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui divider in-footer"></div>
+                <div class="text-left in-footer">
+                    Developed by Mugglecoding team catcuts
+                </div>
+                <div class="text-right in-footer" style="float: right;margin-left: 0px;">
+                    京ICP备15047012号-2
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>

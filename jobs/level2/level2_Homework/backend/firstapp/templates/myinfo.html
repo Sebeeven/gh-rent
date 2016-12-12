@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="{% static "css/semantic.css" %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static "css/myinfo.css" %}" media="screen" title="no title">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="ui inverted top fixed menu borderless red menu">
+            <div class="header item">
+                <div class="ui image">
+                    <a href="{% url 'index' %}"><img src="{% static "images/tenlogo.png" %}" alt=""></a>
+                </div>
+            </div>
+
+            <div class="right menu">
+                {% if request.user.is_authenticated %}
+                <div class="item">
+                    <h5 class="ui inverted header">
+                            <div class="ui mini circular image">
+                                {% if request.user.profile.avatar %}
+                                <a href="{% url 'myinfo' %}"><img src="{{ request.user.profile.avatar.url }}" alt="" /></a>
+                                {% else %}
+                                <a href="{% url 'myinfo' %}"><img src="{% static 'images/default.png' %}" alt="" /></a>
+                                {% endif %}
+                            </div>
+
+                            <span>{{ request.user.username }}</span>
+
+                        </h5>
+                </div>
+                {% endif %}
+
+                <div class="item">
+
+                    <a href="{% url 'logout' %}" class="ui inverted circular button">Logout</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="ui  raised container segments">
+            <div class="ui head basic segment" style="background-image: url('{% static 'images/bg.png' %}');">
+                <div class="ui circular image cover">
+                    {% if request.user.profile.avatar %}
+                    <img src="{{ request.user.profile.avatar.url }}" alt="" />
+                    {% else %}
+                    <img src="{% static "images/default.png" %}" alt="" />
+                    {% endif %}
+                </div>
+
+
+
+            </div>
+            <div class="ui bottom inverted  six item attached menu">
+
+                <div class="active item">
+                    个人资料
+                </div>
+                <div class="item">
+                    <a href="{% url 'mycollection' %}">我赞过的</a>
+                </div>
+            </div>
+
+            <div class="ui butt segment">
+                <div class="ui basic very padded segment container info">
+                    <form class="ui form" enctype="multipart/form-data" method="post">
+
+                        {% if form.errors %}
+                            <div class="ui error message">
+                                {{ form.errors }}
+                            </div>
+
+                            {% for field in form  %}
+                                {% ifequal field.label "Sex" %}
+                                    <div class="field">
+                                        {{ field }}
+                                    </div>
+                                {% else %}
+                                    <div class="{{ field.errors|yesno:'error, ' }} field">
+                                        {{ field.label }}</br>
+                                        {{ field }}
+                                    </div>
+                                {% endifequal %}
+                            {% endfor %}
+
+                        {% else %}
+                            {% for field in form  %}
+                                {% ifequal field.label "Sex" %}
+                                    <div class="field">
+                                        {{ field }}
+                                    </div>
+                                {% else %}
+                                    <div class="field">
+                                        {{ field.label }}</br>
+                                        {{ field }}
+                                    </div>
+                                {% endifequal %}
+                            {% endfor %}
+
+                        {% endif %}
+
+                        {% csrf_token %}
+
+                        <button class="ui inverted red right floated button" type="submit">修改资料</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

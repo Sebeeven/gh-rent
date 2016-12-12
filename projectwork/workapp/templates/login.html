@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title">
+        <link rel="stylesheet" href="{% static 'css/Login.css' %}" media="screen" title="no title">
+    </head>
+    <body>
+        <!-- 灰色的背景 -->
+        <div class="ui view">
+            <!-- 中间的白色部分 -->
+            <form class="ui form" method="post">
+                <div class="ui text menu">
+                    <div class="menu login">
+                        登录
+                    </div>
+                    <div class="ui image close_right">
+                        <a href="{% url 'index' %}"><img src="/static/image/close_icon2.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="ui view yellow_login"></div>
+                <div class="ui divider"></div>
+                    {% ifnotequal error_msg "" %}
+                        <p style="color:red;position:absolute;top:208px;">
+                            {{ error_msg }}
+                        </p>
+                        <!-- {% for field in form  %}
+                            <div class="field">
+                                {{ field }}
+                            </div>
+                        {% endfor %} -->
+                    {% endifnotequal %}
+
+                    {% if form.errors %}
+                        <p style="color:red;position:absolute;top:208px;">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            {% endfor %}
+                        </p>
+                    {% endif %}
+
+                    {% for field in form %}
+                        <div class="field">
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+
+                    {% csrf_token %}
+
+                <div class="inline field">
+                    <div class="ui checkbox checked">
+                        <input type="checkbox" tabindex="0">
+                        <label>记住我</label>
+                    </div>
+                    <button class="ui button forget" type="submit">
+                        忘记密码？
+                    </button>
+                </div>
+
+                <button type="submit" class="ui circular right button" >
+                    登录
+                    <i class="chevron inverted right icon"></i>
+                </button>
+
+            </form>
+        </div>
+    </body>
+</html>
