@@ -1,5 +1,8 @@
 ## 一、项目介绍
 * 我的第一个租房信息类项目
+* 核心框架：  
+  前端：html + css + vue.js  
+  后端：django + mysql  
 
 ## 二、目录
 * projectwork/是项目目录
