@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/2.0.5/reqwest.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.js"></script> -->
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}" media="screen" title="no title" charset="utf-8">
+        <script type="text/javascript" src="{% static 'js/vue1.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/reqwest.js' %}"></script>
+        <!-- https://github.com/js-cookie/js-cookie version:2.1.3 -->
+        <script type="text/javascript" src="{% static 'js/js.cookie.js' %}"></script>
+
+        <style media="screen">
+            body {
+                padding-top: 40px;
+            }
+            .ui.profile.container {
+                padding-top: 60px;
+            }
+
+        </style>
+    </head>
+    {% verbatim %}
+    <body id="app">
+
+        <div class="ui fixed inverted red borderless menu">
+            <div class="header item">
+                <i @click="back" class="icon angle left"></i>
+                10MINs
+            </div>
+
+        </div>
+
+        <!-- v-if="!opps" -->
+        <div class="ui profile container">
+            <h2 class="ui header">
+                <img src="{{ userinfo.profile.profile_image }}" class="ui circular image">
+                {{ userinfo.username }}
+            </h2>
+            <form class="ui form">
+                <div class="field">
+                    <label>Username</label>
+                    <input v-model="modal.username" type="text"  placeholder="Username">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input v-model="modal.password" type="password"  placeholder="Password">
+                </div>
+            </form>
+            <button @click="sendData" class="ui button" type="submit" style="margin-top:10px;">Save</button>
+            <p>
+                {{ msg }}
+            </p>
+        </div>
+
+
+        <script>
+            vm = new Vue({
+                el:"#app",
+                data:{
+                    modal:{
+                        id:'',
+                        username:'',
+                        password:'',
+                    },
+                    userinfo:[],
+                    msg:'xxx',
+                },
+                methods:{
+                    sendData:function () {
+                        var self = this;
+                        reqwest({
+                            url:'/api/modifyinfo/' + self.modal.id,
+                            type:'json',
+                            method:'post',
+                            headers:Cookies.get('token')?{'Authorization': 'Token ' + Cookies.get('token')}:{},
+                            data:{
+                                username:self.modal.username,
+                                password:self.modal.password,
+                            },
+                            success:function (resp) {
+                                console.log(resp);
+                                alert(resp.msg);
+                                self.getinfo();
+                            },
+                            error:function (err) {
+                                self.msg=err.msg;
+                            }
+                        })
+                    },
+                    getinfo:function () {
+                        var self = this;
+                        var id = Cookies.get("user_id");
+                        console.log(id);
+                        reqwest({
+                            url:'/api/person/' + id,
+                            type:'json',
+                            method:'get',
+                            headers:Cookies.get('token')?{'Authorization': 'Token ' + Cookies.get('token')}:{},
+                            data:{},
+                            success:function (resp) {
+                                console.log(resp);
+                                self.userinfo = resp;
+                                self.modal.username = self.userinfo.username;
+                                self.modal.id = id;
+                                self.password = '';
+                            },
+                        })
+                    },
+                    back:function () {
+                        window.location.href="/m/userlistpanel/";
+                    },
+                },
+                ready:function () {
+                    if(Cookies.get('token')){
+                        console.log(Cookies.get('token'))
+                        this.getinfo()
+                    }else{
+                        window.location.href="/m/userlistpanel/login/";
+                    }
+                }
+            })
+        </script>
+    </body>
+    {% endverbatim %}
+</html>

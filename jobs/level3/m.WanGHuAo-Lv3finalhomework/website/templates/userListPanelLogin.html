@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/2.0.5/reqwest.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.js"></script> -->
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}" media="screen" title="no title" charset="utf-8">
+        <script type="text/javascript" src="{% static 'js/vue1.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/reqwest.js' %}"></script>
+        <!-- https://github.com/js-cookie/js-cookie version:2.1.3 -->
+        <script type="text/javascript" src="{% static 'js/js.cookie.js' %}"></script>
+
+        <style media="screen">
+            body {
+                padding-top: 40px;
+            }
+            .ui.vertical.segment.masthead {
+                height:200px;
+                padding-top:80px;
+                background-image: url({% static 'images/super_blur_back2.jpg' %});
+                background-size: cover;
+            }
+            .ui.login.container {
+                padding-top: 60px;
+            }
+            .ui.fixed.something.menu {
+                position: fixed;top:50px;
+            }
+            .unscrollable{
+                height:100%;
+                overflow:hidden;
+            }
+            .ui.padded.modal.active {
+                transform: translate(0, -50%);
+            }
+            .ui.vertical.inverted.background.segment {
+                height: 260px;
+                background-size: cover;
+            }
+
+            .shortcut.buttons{
+                position: absolute;top:15px;left:15px;
+            }
+
+
+        </style>
+    </head>
+    {% verbatim %}
+    <body id="app" >
+        <div  class="ui fixed inverted red borderless menu">
+            <div  v-on:click="showMenu = !showMenu" class="header item">
+                10MINs
+            </div>
+
+        </div>
+        <!-- v-if="!opps" -->
+        <div class="ui vertical center aligned inverted segment masthead">
+            <h1 class="ui  heasder">Welcome</h1>
+        </div>
+        <div class="ui login container">
+            <!-- 登录 -->
+            <form class="ui form">
+                <div class="field">
+                    <label>Username</label>
+                    <input v-model="modal.username" type="text"  placeholder="Username">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input v-model="modal.password" type="password"  placeholder="Password">
+                </div>
+            </form>
+            <button @click="logIn" class="ui button" type="submit" style="margin-top:10px;">Submit</button>
+            <p style="color:red;margin-top:10px;">{{ showMsg }}</p>
+        </div>
+
+
+
+        <script>
+            vm = new Vue ({
+                el:"#app",
+                data:{
+                    modal:{
+                        username:'',
+                        password:'',
+                    },
+                    vobj:[],
+                    msg:'',
+                    showMenu:false,
+                },
+                methods:{
+                    logIn:function () {
+                        var self = this;
+                        reqwest({
+                            url:'/api/token-auth',
+                            type:'json',
+                            method:'post',
+                            data:{
+                                username: self.modal.username,
+                                password: self.modal.password,
+                            },
+                            success:function (resp) {
+                                console.log(resp);
+                                Cookies.set('token', resp.token);
+                                // window.open("/m/userlistpanel/");
+                                window.location.href="/m/userlistpanel/";
+                            }
+                        })
+                    }
+                },
+                computed:{
+                    showMsg:function () {
+                        switch (this.msg) {
+                            // case '200':
+                            //     return "管理员登录成功!";
+                            case '40101':
+                                return "您没有权限登录!";
+                            case '40401':
+                                return "用户名或密码错误!";
+                            case '40001':
+                                return "用户名和密码不能为空!";
+                            default:
+                                return "";
+
+                        }
+                    },
+                },
+                ready:function () {
+                    // this.getData()
+                }
+
+            })
+        </script>
+    </body>
+    {% endverbatim %}
+</html>
